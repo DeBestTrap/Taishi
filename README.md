@@ -1,0 +1,2 @@
+# Taishi
+General Discord Bot
