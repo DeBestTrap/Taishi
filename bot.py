@@ -8,6 +8,7 @@ import discord
 import asyncio
 from discord.ext import commands
 from dotenv import load_dotenv
+from cogs.general.color_selection.ColorView import PersistentColorView
 
 class Bot(commands.Bot):
     def __init__(self) -> None:
@@ -38,6 +39,9 @@ class Bot(commands.Bot):
 
     async def setup_hook(self) -> None:
         await load_cogs(self)
+        views = PersistentColorView.setup_peristent_views()
+        for view in views:
+            self.add_view(view)
 
 
 # loads all subdirectories of folder, and loads all .py files that are inside a specified folder to load
